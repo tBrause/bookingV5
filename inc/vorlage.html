@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="fav.ico">
+    <meta name="robots" content="noindex, nofollow">
+    <title>
+        <?php echo $var_admin_titel; ?>
+    </title>
+    <?php include("metas_netbooking.php"); ?>
+
+    <!-- DATEPICKER -->
+    <script>
+        $(function () {
+            $('#input_anreise, #input_abreise').datepicker({
+                minDate: -0, maxDate: "+1Y", dateFormat: 'dd.mm.yy',
+                prevText: '&#x3c;zur&uuml;ck', prevStatus: '',
+                prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+                nextText: 'Vor&#x3e;', nextStatus: '',
+                nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+                currentText: 'heute', currentStatus: '',
+                todayText: 'heute', todayStatus: '',
+                clearText: '-', clearStatus: '',
+                closeText: 'schlie&szlig;en', closeStatus: '',
+                monthNames: ['Januar', 'Februar', 'M&auml;rz', 'April', 'Mai', 'Juni',
+                    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'M&auml;r', 'Apr', 'Mai', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+                dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+                showMonthAfterYear: false
+            });
+
+            $("#input_abreise").datepicker("option", "minDate", 1);
+
+            $("#input_anreise").change(function () {
+                var heute = new Date()
+                var ausgewaehltes = $("#input_anreise").datepicker("getDate");
+                var sek = ((ausgewaehltes - heute) / 1000);
+                var tag = (sek / 86400);
+                var diff = Math.ceil(tag);
+                var mindate_abreise = (diff + 1);
+                $("#input_abreise").datepicker("option", "minDate", mindate_abreise);
+            });
+        });
+    </script>
+</head>
+<?php include("body.php"); ?>
+
+<!-- INHALT -->
+<main id="inhalt">
+    <?php include("inhalt.php"); ?>
+</main>
+
+<!-- BG -->
+<div id="bg"></div>
+
+<?php include("js_default.php"); ?>
+</body>
+
+</html>
