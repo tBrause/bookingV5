@@ -9,6 +9,7 @@
  * HIGHLIGHT NAVIGATION
  * 
  * 
+ * 
  */
 
 function displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_titel, $form_bubble_icon, $form_bubble_link, $form_bubble_position)
