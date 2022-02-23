@@ -10,7 +10,7 @@
  * 
  */
 
-function displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_titel, $form_bubble_icon, $form_bubble_link, $form_bubble_position)
+function displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_titel, $form_bubble_icon, $form_bubble_link, $form_bubble_position, $cssbutton)
 {
     # Formular: 
     if ($fct === "edit") {
@@ -26,7 +26,7 @@ function displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_
     } else {
 
         # Übersicht
-        getBubbles($conn, $area, $url);
+        getBubbles($conn, $area, $url, $cssbutton);
         #
     }
 }
@@ -305,7 +305,7 @@ function displayInfoTypen()
  * 
  */
 
-function getBubbles($conn, $area, $url)
+function getBubbles($conn, $area, $url, $cssbutton)
 {
     $sql = "SELECT * FROM `bubbles` ORDER BY position";
     $result = mysqli_query($conn, $sql);
@@ -327,45 +327,31 @@ function getBubbles($conn, $area, $url)
     echo '</ul>';
 
     echo '<h2>Vorschau SmartPhone</h2>';
-    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.colors.css</p>';
-    echo '<iframe style="width:375px; height:450px;" src="inc/vorschau.html"></iframe>';
+    echo '<iframe style="width:375px; height:450px;" src="' . $url . 'admin/inc/vorschau.html"></iframe>';
 
     echo '<h2>Vorschau Desktop</h2>';
-    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.colors.css</p>';
-    echo '<iframe style="width:100%; height:600px;" src="inc/vorschau.html"></iframe>';
+    echo '<iframe style="width:100%; height:600px;" src="' . $url . 'admin/inc/vorschau.html"></iframe>';
 
-
-    ################# Formular: Bild hochladen
-    //function displayNewImage($area, $fct, $id)
-    //{
-    echo '<div class="wrapper" style="margin-top:25vh">';
-
+    # CSS Upload
+    echo '<h2>CSS Datei hochladen</h2>';
+    $colors_css = $url . 'astrotel_connect/style.colors.css';
+    echo '<p><a href="' . $colors_css . '" target="_blank">CSS-Online-Datei: ' . $colors_css . '</a></p>';
     echo '<section class="form_inline">';
+    echo '<form enctype="multipart/form-data" action="' . $_SERVER['SCRIPT_NAME'] . '" method="POST">';
 
-    # Bild auswählen
+    # CSS Datei auswählen
     echo '<fieldset>
-        <legend>Bild auswählen (.jpg oder .jpeg) *</legend>
-        <input type="file" name="datei">
+        <legend>style.colors.css</legend>
+        <input type="file" name="userfile">
         </fieldset>';
-
-    echo '</section>';
 
     # Versteckte Felder
     echo '<input type="hidden" name="area" value="' . $area . '">';
-    echo '<input type="hidden" name="id" value="' . $id . '">';
-    echo '<input type="hidden" name="fct" value="' . $fct . '">';
 
     # Buttons
-    echo '<section id="section_submit">
-        <button type="submit" name="button" value="hochladen"><i class="fas fa-upload"></i>Bild hochladen</button>
-        <button type="button" name="button" value="abbrechen" onClick="window.location.href=\'main.php?area=' . $area . '&fct=edit&id=' . $id . '\';"><i class="fas fa-times"></i>Abbrechen</button>
-    </section>';
+    echo '<button type="submit" name="cssbutton" value="cssupdate"><i class="fas fa-upload"></i>CSS Datei hochladen</button>';
 
-    echo '</div>';
-    //}
-
-
-
-
+    echo '</form>';
+    echo '</section>';
     echo '</div>';
 }

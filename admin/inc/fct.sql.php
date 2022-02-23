@@ -12,6 +12,29 @@
  * 
  */
 
+# CSS Upload
+if ($area === '3' && $cssbutton === 'cssupdate') {
+
+    if (!empty($_FILES)) {
+        $css_file = basename($_FILES['userfile']['name']);
+
+        if ($css_file === 'style.colors.css') {
+            $css_dir = $dir . 'astrotel_connect/';
+            $uploadfile = $css_dir . $css_file;
+
+            if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+                header('Location: main.php?area=' . $area . '');
+            } else {
+                print "<pre>";
+                print_r($_FILES);
+                print "</pre>";
+            }
+        } else {
+            echo 'Fehler: falsche Datei wurde versucht hochzuladen.';
+        }
+    }
+}
+
 # INSERT `cms_menue` && INSERT `cms_inhalte`
 if ($area === '2' && $submit_menue === 'anlegen') {
 

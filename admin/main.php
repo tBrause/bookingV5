@@ -116,6 +116,8 @@ $form_bubble_icon = trim(substr(filter_input(INPUT_POST, 'form_bubble_icon'), 0,
 $form_bubble_link = trim(substr(filter_input(INPUT_POST, 'form_bubble_link'), 0, 255));
 $form_bubble_position = trim(substr(filter_input(INPUT_POST, 'form_bubble_position'), 0, 20));
 
+$cssbutton = trim(substr(filter_input(INPUT_POST, 'cssbutton'), 0, 20));
+
 
 
 
@@ -216,7 +218,11 @@ switchArea($area);
 
         ################# Form für alle Formulare, ausser im Breiech "Formulare" / "Bearbeiten"
         if (intval($area) !== 2) {
-            echo '<form method="post" action="' . $_SERVER['SCRIPT_NAME'] . '">';
+            if (intval($area) === 3 && empty($fct)) {
+                # Nichts
+            } else {
+                echo '<form method="post" action="' . $_SERVER['SCRIPT_NAME'] . '">';
+            }
         }
 
         ################# Wähle die Funktionen zur Ausgabe für den entsprechenden Bereich (Menüpunkt)
@@ -235,7 +241,7 @@ switchArea($area);
             #
             # Bereich: Heighlight Navigation
 
-            displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_titel, $form_bubble_icon, $form_bubble_link, $form_bubble_position);
+            displayBubbles($conn, $fct, $area, $url, $id, $form_type, $form_bubble_titel, $form_bubble_icon, $form_bubble_link, $form_bubble_position, $cssbutton);
             #
             #
             #
@@ -283,7 +289,11 @@ switchArea($area);
         echo '</div>';
 
         if (intval($area) !== 2) {
-            echo '</form>';
+            if (intval($area) === 3 && empty($fct)) {
+                # Nichts
+            } else {
+                echo '</form>';
+            }
         }
 
         ?>
