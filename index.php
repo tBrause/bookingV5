@@ -35,7 +35,7 @@ require("inc/check.php");
                     /**
                      * 
                      * Alle Formulare
-                     * auf dem see
+                     * auf dem SEE
                      * 
                      */
                     $sql = "SELECT * FROM `cms_menue` WHERE sichtbar = '1' ORDER BY titel";
