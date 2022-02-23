@@ -329,7 +329,7 @@ function getBubbles($conn, $area, $url, $cssbutton)
     echo '<h2>Vorschau SmartPhone</h2>';
     echo '<iframe style="width:375px; height:450px;" src="' . $url . 'admin/inc/vorschau.html"></iframe>';
 
-    echo '<h2>Vorschau Desktop</h2>';
+    echo '<h2>Vorschau Desktop  </h2>';
     echo '<iframe style="width:100%; height:600px;" src="' . $url . 'admin/inc/vorschau.html"></iframe>';
 
     # CSS Upload
