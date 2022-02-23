@@ -336,33 +336,33 @@ function getBubbles($conn, $area, $url)
 
 
     ################# Formular: Bild hochladen
-    function displayNewImage($area, $fct, $id)
-    {
-        echo '<div class="wrapper" style="margin-top:25vh">';
+    //function displayNewImage($area, $fct, $id)
+    //{
+    echo '<div class="wrapper" style="margin-top:25vh">';
 
-        echo '<section class="form_inline">';
+    echo '<section class="form_inline">';
 
-        # Bild auswählen
-        echo '<fieldset>
+    # Bild auswählen
+    echo '<fieldset>
         <legend>Bild auswählen (.jpg oder .jpeg) *</legend>
         <input type="file" name="datei">
         </fieldset>';
 
-        echo '</section>';
+    echo '</section>';
 
-        # Versteckte Felder
-        echo '<input type="hidden" name="area" value="' . $area . '">';
-        echo '<input type="hidden" name="id" value="' . $id . '">';
-        echo '<input type="hidden" name="fct" value="' . $fct . '">';
+    # Versteckte Felder
+    echo '<input type="hidden" name="area" value="' . $area . '">';
+    echo '<input type="hidden" name="id" value="' . $id . '">';
+    echo '<input type="hidden" name="fct" value="' . $fct . '">';
 
-        # Buttons
-        echo '<section id="section_submit">
+    # Buttons
+    echo '<section id="section_submit">
         <button type="submit" name="button" value="hochladen"><i class="fas fa-upload"></i>Bild hochladen</button>
         <button type="button" name="button" value="abbrechen" onClick="window.location.href=\'main.php?area=' . $area . '&fct=edit&id=' . $id . '\';"><i class="fas fa-times"></i>Abbrechen</button>
     </section>';
 
-        echo '</div>';
-    }
+    echo '</div>';
+    //}
 
 
 
