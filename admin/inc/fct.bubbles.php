@@ -327,11 +327,11 @@ function getBubbles($conn, $area, $url)
     echo '</ul>';
 
     echo '<h2>Vorschau SmartPhone</h2>';
-    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.connect.css</p>';
+    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.colors.css</p>';
     echo '<iframe style="width:375px; height:450px;" src="inc/vorschau.html"></iframe>';
 
     echo '<h2>Vorschau Desktop</h2>';
-    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.connect.css</p>';
+    echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.colors.css</p>';
     echo '<iframe style="width:100%; height:600px;" src="inc/vorschau.html"></iframe>';
 
     echo '</div>';
