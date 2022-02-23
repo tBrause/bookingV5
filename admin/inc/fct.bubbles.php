@@ -334,5 +334,38 @@ function getBubbles($conn, $area, $url)
     echo '<p>Anpassen der Farben: ' . $url . 'astrotel_connect/style.colors.css</p>';
     echo '<iframe style="width:100%; height:600px;" src="inc/vorschau.html"></iframe>';
 
+
+    ################# Formular: Bild hochladen
+    function displayNewImage($area, $fct, $id)
+    {
+        echo '<div class="wrapper" style="margin-top:25vh">';
+
+        echo '<section class="form_inline">';
+
+        # Bild auswählen
+        echo '<fieldset>
+        <legend>Bild auswählen (.jpg oder .jpeg) *</legend>
+        <input type="file" name="datei">
+        </fieldset>';
+
+        echo '</section>';
+
+        # Versteckte Felder
+        echo '<input type="hidden" name="area" value="' . $area . '">';
+        echo '<input type="hidden" name="id" value="' . $id . '">';
+        echo '<input type="hidden" name="fct" value="' . $fct . '">';
+
+        # Buttons
+        echo '<section id="section_submit">
+        <button type="submit" name="button" value="hochladen"><i class="fas fa-upload"></i>Bild hochladen</button>
+        <button type="button" name="button" value="abbrechen" onClick="window.location.href=\'main.php?area=' . $area . '&fct=edit&id=' . $id . '\';"><i class="fas fa-times"></i>Abbrechen</button>
+    </section>';
+
+        echo '</div>';
+    }
+
+
+
+
     echo '</div>';
 }
