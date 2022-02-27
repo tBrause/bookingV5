@@ -148,7 +148,7 @@ if ($senden === '' || ($senden == 'Anfrage senden' && count($error_msg) >= 1)) {
                 if ($personen !== 0) {
                     $ausgabe_personen = ' für ' . $personen  . ' ' . (($personen > 1) ? 'Personen' : 'Person') . '';
                 }
-                echo '<option class="option_booking" value="' . $option_id . '"' . $selected . '> ' . ($i + 1) . $einheiten_ausgabe . ' ' . $ausgabe_personen . '</option>';
+                echo '<option class="option_booking" value="' . $option_id . '"' . $selected . '> ' . ($i + 1) . ' ' . $einheiten_ausgabe . $ausgabe_personen . '</option>';
             }
 
             echo '</select>';
