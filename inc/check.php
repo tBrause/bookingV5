@@ -37,14 +37,28 @@ function checkSession($senden)
 function checkNewSite($conn)
 {
     $referrer = selectSubmitSession($conn)['referrer'];
+    $send = selectSubmitSession($conn)['send'];
     $akt_site = $_SERVER['REQUEST_URI'];
 
+    //if ($send == 0) {
     if ($referrer != $akt_site) {
         $sql = "UPDATE `submit` SET `attempt` = '0', `send` = '0', `referrer` = '" . $akt_site . "' WHERE session = '" . selectSubmitSession($conn)['session'] . "'";
         #echo $sql . '<br>';
         $result = mysqli_query($conn, $sql);
     }
+    //}
 }
+
+function updateReferrer($conn)
+{
+    $referrer = selectSubmitSession($conn)['referrer'];
+    $akt_site = $_SERVER['REQUEST_URI'];
+
+    $sql = "UPDATE `submit` SET `referrer` = '" . $akt_site . "' WHERE session = '" . selectSubmitSession($conn)['session'] . "'";
+    #echo $sql . '<br>';
+    $result = mysqli_query($conn, $sql);
+}
+
 
 function selectSubmitSession($conn)
 {
@@ -81,19 +95,8 @@ function selectSubmit($conn)
     $sql = "SELECT * FROM `submit` WHERE session = '" . getSessionId() . "'";
     $result = mysqli_query($conn, $sql);
 
-    /*if ($result->num_rows >= 1) {
-        $row = mysqli_fetch_assoc($result);
+    if ($result->num_rows == 0) {
 
-        ##### UPDATE COUNT
-        updateSubmit($conn, $row);
-    } else {
-
-        ##### INSERT NEW USER
-        insertSubmit($conn);
-        #echo 'Neuer Eintrag';
-    }*/
-
-    if ($result->num_rows <= 0) {
         ##### INSERT NEW USER
         insertSubmit($conn);
     }
@@ -119,21 +122,6 @@ function updateSubmitBad($conn, $row)
     #echo $sql . "<br>";
     $result = mysqli_query($conn, $sql);
 }
-
-function updateSubmitBack($conn, $row)
-{
-    $sql = "UPDATE `submit` SET `back` = '1' WHERE id = '" . $row['id'] . "'";
-    #echo $sql . "<br>";
-    $result = mysqli_query($conn, $sql);
-}
-
-function updateSubmitBackClear($conn, $row)
-{
-    $sql = "UPDATE `submit` SET `back` = '0' WHERE id = '" . $row['id'] . "'";
-    #echo $sql . "<br>";
-    $result = mysqli_query($conn, $sql);
-}
-
 
 /**
  * 

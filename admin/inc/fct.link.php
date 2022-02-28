@@ -40,7 +40,8 @@ function getNewLink($new_id, $titel)
     foreach ($umlaute as $suche => $ersetzen) {
         $link = str_replace("" . $suche . "", "" . $ersetzen . "", "" . strtolower($link) . "");
     }
-    $link_ausgabe = $link . '-anfragen.php?lg=1&id=' . $new_id;
+    #$link_ausgabe = $link . '-anfragen.php?lg=1&id=' . $new_id;
+    $link_ausgabe = $link . '-anfragen.php?id=' . $new_id;
 
     return $link_ausgabe;
 }
