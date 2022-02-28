@@ -38,7 +38,7 @@ require("inc/check.php");
                      * auf dem SEElld
                      * 
                      */
-                    $sql = "SELECT * FROM `cms_menue` WHERE sichtbar = '1' ORDER BY titel";
+                    $sql = "SELECT * FROM `cms_menue` WHERE template_id = '20' sichtbar = '1' ORDER BY titel";
                     $result = mysqli_query($conn, $sql);
 
                     while ($row = mysqli_fetch_array($result)) {
