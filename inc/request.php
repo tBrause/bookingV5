@@ -57,9 +57,10 @@ require('check.php');
  * diese wieder dargestellt wird
  * 
  */
-if (intval(selectSubmitSession($conn)['back']) === 1) {
+if (intval(selectSubmitSession($conn)['back']) === 1 && selectSubmitSession($conn)['referrer'] == '') {
+    header("Location: " . $url . "index.php");
     #header("Location: " . $url . "senden/index.php");
-    echo selectSubmitSession($conn)['referrer'] . ' ggg';
+    #echo selectSubmitSession($conn)['referrer'] . ' ggg';
 }
 
 
