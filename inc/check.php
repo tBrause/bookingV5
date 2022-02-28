@@ -81,7 +81,7 @@ function selectSubmit($conn)
     $sql = "SELECT * FROM `submit` WHERE session = '" . getSessionId() . "'";
     $result = mysqli_query($conn, $sql);
 
-    if ($result->num_rows >= 1) {
+    /*if ($result->num_rows >= 1) {
         $row = mysqli_fetch_assoc($result);
 
         ##### UPDATE COUNT
@@ -91,6 +91,11 @@ function selectSubmit($conn)
         ##### INSERT NEW USER
         insertSubmit($conn);
         #echo 'Neuer Eintrag';
+    }*/
+
+    if ($result->num_rows <= 0) {
+        ##### INSERT NEW USER
+        insertSubmit($conn);
     }
 }
 
