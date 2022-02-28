@@ -38,12 +38,12 @@ require("inc/check.php");
                      * auf dem SEElld
                      * 
                      */
-                    $sql = "SELECT * FROM `cms_menue` WHERE template_id = '20' AND sichtbar = '1' ORDER BY titel";
+                    $sql = "SELECT * FROM `cms_menue` WHERE (template_id = '20' OR template_id = '22') AND sichtbar = '1' ORDER BY titel";
                     $result = mysqli_query($conn, $sql);
 
                     while ($row = mysqli_fetch_array($result)) {
                         echo '<li>';
-                        echo '<a href="' . $url . getNewLink($row['id'], $row['titel']) . '">' . $row['titel'] . '</a><br>';
+                        echo '<a href="' . $url . getNewLink($row['id'], $row['titel']) . '">' . $row['titel'] . '</a>';
                         echo '</li>';
                     }
                     ?>
