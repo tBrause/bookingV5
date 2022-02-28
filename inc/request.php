@@ -57,14 +57,14 @@ require('check.php');
  * diese wieder dargestellt wird
  * 
  */
-if (intval(selectSubmitSession($conn)['back']) === 1 && selectSubmitSession($conn)['referrer'] == '') {
-    updateSubmitBackClear($conn, selectSubmitId($conn));
-    header("Location: " . $url . "index.php");
+/*
+if (intval(selectSubmitSession($conn)['send']) === 1) {
 
-    #header("Location: " . $url . "senden/index.php");
-    #echo selectSubmitSession($conn)['referrer'] . ' ggg';
-}
-
+    header("Location: " . selectSubmitSession($conn)['referrer'] . "");
+    #header("Location: " . $_SERVER['REQUEST_URI'] . "");
+    #$_SERVER['REQUEST_URI']
+    die();
+}*/
 
 
 /**
@@ -300,21 +300,17 @@ if ($senden == 'Anfrage senden') {
 
         if (count($bad_error) <= 0) {
 
-            ###### max. 15 mal auf senden geklickt + senden == 0
+            ###### max. 15 mal auf senden geklickt + senden <= 2
 
-            if (selectSubmitId($conn)["attempt"] <= 14 && selectSubmitId($conn)["send"] == 0) {
+            if (selectSubmitId($conn)["attempt"] <= 14 && selectSubmitId($conn)["send"] <= 2) {
 
                 ##### Sende E-Mail-Funktion
                 require("mail.php");
 
                 ##### UPDATES werden in der mail.php ausgeführt
                 ##### UPDATE SEND => check.php
-                ##### UPDATE BACK => check.php
 
             } else {
-
-                ##### UPDATE BACK => check.php
-                updateSubmitBack($conn, selectSubmitId($conn));
 
                 ##### By By nach * Sekunden
                 sleep($sleep);
@@ -327,9 +323,6 @@ if ($senden == 'Anfrage senden') {
 
         else {
 
-            ##### UPDATE BACK => check.php
-            updateSubmitBack($conn, selectSubmitId($conn));
-
             ##### By By nach * Sekunden
             sleep($sleep);
             header("Location: " . $go);
@@ -337,6 +330,3 @@ if ($senden == 'Anfrage senden') {
         }
     }
 }
-
-
-    ### Optionale Felder
