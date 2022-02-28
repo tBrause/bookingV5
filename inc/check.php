@@ -85,7 +85,7 @@ function selectSubmit($conn)
         $row = mysqli_fetch_assoc($result);
 
         ##### UPDATE COUNT
-        #updateSubmit($conn, $row);
+        updateSubmit($conn, $row);
     } else {
 
         ##### INSERT NEW USER
