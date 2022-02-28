@@ -127,6 +127,14 @@ function updateSubmitBack($conn, $row)
     $result = mysqli_query($conn, $sql);
 }
 
+function updateSubmitBackClear($conn, $row)
+{
+    $sql = "UPDATE `submit` SET `back` = '0' WHERE id = '" . $row['id'] . "'";
+    #echo $sql . "<br>";
+    $result = mysqli_query($conn, $sql);
+}
+
+
 /**
  * 
  * Neuer Eintrag

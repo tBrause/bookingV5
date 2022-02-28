@@ -58,7 +58,9 @@ require('check.php');
  * 
  */
 if (intval(selectSubmitSession($conn)['back']) === 1 && selectSubmitSession($conn)['referrer'] == '') {
+    updateSubmitBackClear($conn, selectSubmitId($conn));
     header("Location: " . $url . "index.php");
+
     #header("Location: " . $url . "senden/index.php");
     #echo selectSubmitSession($conn)['referrer'] . ' ggg';
 }
