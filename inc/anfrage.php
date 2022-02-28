@@ -84,7 +84,15 @@ while ($row = mysqli_fetch_assoc($result_anzahl_einheiten)) {
         #$var_var = ${"einheit_" . $i};*/
         #$einheiten[] = $einheit_1;
         #$einheiten[] = 'option class="option_booking" value="' . ($i + 1) . '_' . $row['id'] . '" ' . ($i + 1) . ' ' . $row['titel'] . ' für ' . $row['personen'] * ($i + 1)  . ' ' . (($row['personen'] * ($i + 1) > 1) ? 'Personen' : 'Person') . '/option';
-        $einheiten[] = '<option class="option_booking" value="' . ($i + 1) . '_' . $row['id'] . '"> ' . ($i + 1) . ' ' . $row['titel'] . ' für ' . $row['personen'] * ($i + 1)  . ' ' . (($row['personen'] * ($i + 1) > 1) ? 'Personen' : 'Person') . ' ' . $einheit_1 . '</option>';
+
+        $ausgabe_personen = '';
+        if ($row['personen'] !== 0) {
+            $ausgabe_personen = ' für ' . $row['personen'] * ($i + 1)  . ' ' . (($row['personen'] * ($i + 1) > 1) ? 'Personen' : 'Person') . '';
+        }
+
+
+        //$einheiten[] = '<option class="option_booking" value="' . ($i + 1) . '_' . $row['id'] . '"> ' . ($i + 1) . ' ' . $row['titel'] . ' für ' . $row['personen'] * ($i + 1)  . ' ' . (($row['personen'] * ($i + 1) > 1) ? 'Personen' : 'Person') . ' ' . $einheit_1 . '</option>';
+        $einheiten[] = '<option class="option_booking" value="' . ($i + 1) . '_' . $row['id'] . '"> ' . ($i + 1) . ' ' . $row['titel'] . '' . $ausgabe_personen . '</option>';
     }
 
     $einheit_count++;
