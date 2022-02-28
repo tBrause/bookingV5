@@ -58,7 +58,8 @@ require('check.php');
  * 
  */
 if (intval(selectSubmitSession($conn)['back']) === 1) {
-    header("Location: " . $url . "senden/index.php");
+    #header("Location: " . $url . "senden/index.php");
+    echo selectSubmitSession($conn)['referrer'] . ' ggg';
 }
 
 
