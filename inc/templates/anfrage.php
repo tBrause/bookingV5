@@ -4,6 +4,7 @@
  * 
  * Template für die Formulare
  * 
+ * 
  */
 echo '<div id="main_booking">';
 
