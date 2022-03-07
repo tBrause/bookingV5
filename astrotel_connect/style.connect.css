@@ -190,7 +190,7 @@ div#astrotel_nav ul li span.icons_extern {
     width: 100%;
     letter-spacing: 0.6px;
     color: #666;
-    background-color: #f1f1f1;
+    background-color: var(--mobile-schriftfarbe-icon);
   }
   div#astrotel_nav_m ul li span.stxt {
     display: none;
@@ -215,7 +215,7 @@ div#astrotel_nav ul li span.icons_extern {
     margin-right: 10px;
     font-size: 20px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: var(--mobile-schriftfarbe-icon);
     box-shadow: 2px 2px 0px #666;
   }
 
