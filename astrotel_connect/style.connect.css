@@ -189,8 +189,8 @@ div#astrotel_nav ul li span.icons_extern {
     display: block;
     width: 100%;
     letter-spacing: 0.6px;
-    color: #666;
-    background-color: var(--mobile-schriftfarbe-icon);
+    color: var(--mobile-schriftfarbe-icon);
+    _background-color: var(--mobile-schriftfarbe-icon);
   }
   div#astrotel_nav_m ul li span.stxt {
     display: none;
@@ -215,8 +215,8 @@ div#astrotel_nav ul li span.icons_extern {
     margin-right: 10px;
     font-size: 20px;
     text-align: center;
-    background-color: var(--mobile-schriftfarbe-icon);
-    box-shadow: 2px 2px 0px #666;
+    background-color: var(--mobile-hintergrundfarbe-icon);
+    box-shadow: 2px 2px 0px var(--mobile-schattenfarbe-icon);
   }
 
   div#mclose {
