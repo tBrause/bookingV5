@@ -1,5 +1,5 @@
 <?php
-// Externen Zugriff zulassen ?????????
+// Externen Zugriff zulassen !!!
 ///////////////////////////////////////////////////
 header('Access-Control-Allow-Origin: *');
 
